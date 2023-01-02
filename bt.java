@@ -12,7 +12,8 @@ public class bt {
 
     public static void main(String[] args) {
          sc=new Scanner(System.in);
-         createtree();
+         Node root=createtree();
+        System.out.println(heighttree(root));
     }
 
     static Node createtree(){
@@ -28,5 +29,36 @@ public class bt {
         
 
         return root;
+    }
+
+    static void Inorder(Node root){
+        if(root==null)return;
+        Inorder(root.left);
+        System.out.println(root.data);
+        Inorder(root.right);
+    }
+
+    static void preorder(Node root){
+        if(root==null)return;
+        System.out.println(root.data);
+        preorder(root.left);
+        preorder(root.right);
+    }
+
+    static void postorder(Node root){
+        if(root==null)return;
+        postorder(root.left);
+        postorder(root.right);
+        System.out.println(root.data);
+        
+    }
+
+    static int heighttree(Node root){
+        if(root==null)return 0;
+        return Math.max(heighttree(root.left),heighttree(root.right))+1;
+    }
+    static int sizetree(Node root){
+        if(root==null)return 0;
+        return sizetree(root.left)+sizetree(root.right)+1;
     }
 }
